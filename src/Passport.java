@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Passport {
     private final int passportNumber;
@@ -8,7 +6,7 @@ public class Passport {
     private final String firstName;
     private final String middleName;
     private final String dateOfBirth;
-    private static List<Passport> passportList = new ArrayList<Passport>();
+    private static Set<Passport> passportList = new HashSet<>();
 
     public Passport(int passportNumber, String lastName, String firstName, String middleName, String dateOfBirth) {
         this.passportNumber = passportNumber;
@@ -63,14 +61,12 @@ public class Passport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passport passport = (Passport) o;
-        return passportNumber == passport.passportNumber && Objects.equals(lastName, passport.lastName) &&
-                Objects.equals(firstName, passport.firstName) && Objects.equals(middleName, passport.middleName) &&
-                Objects.equals(dateOfBirth, passport.dateOfBirth);
+        return passportNumber == passport.passportNumber;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(passportNumber, lastName, firstName, middleName, dateOfBirth);
+        return Objects.hash(passportNumber);
     }
 }
 

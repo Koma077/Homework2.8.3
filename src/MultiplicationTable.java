@@ -1,24 +1,28 @@
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 public class MultiplicationTable {
-    public static void main(String[] args) {
-        String[] tasksArray = tasksArray();
-        for (int i = 0; i < 15; i++) {
-            System.out.println(tasksArray[i]);
-        }
+    private static Set<String> setTask = new HashSet<>();
+
+    public static String generateNumber() {
+        int x;
+        int y;
+        Random random = new Random();
+        x = random.nextInt(10);
+        y = random.nextInt(10);
+        return x + "*" + y;
     }
 
-    public static String[] tasksArray() {
-        String[] tasksArray = new String[36];
-        int n = 0;
-        for (int i = 2; i <= 9; i++) {
-            for (int j = i; j <= 9; j++) {
-                tasksArray[n] = i + " × " + j + " = o_o";
-                n++;
+    public static void main(String[] args) {
+        int count = 0;
+        while (count < 15) {
+            String pairNumber = generateNumber();
+            String inverseNumber = pairNumber.charAt(2) + "*" + pairNumber.charAt(0);
+            if (!setTask.contains(pairNumber) && !setTask.contains(inverseNumber)) {
+                setTask.add(pairNumber);
+                count++;
             }
         }
-        Collections.shuffle(Arrays.asList(tasksArray));
-        return tasksArray;
+        System.out.println(setTask);
     }
 }
+
