@@ -1,12 +1,11 @@
 import java.util.*;
 
 public class Passport {
-    private final int passportNumber;
-    private final String lastName;
-    private final String firstName;
-    private final String middleName;
-    private final String dateOfBirth;
-    private static Set<Passport> passportList = new HashSet<>();
+    private  int passportNumber;
+    private  String lastName;
+    private  String firstName;
+    private  String middleName;
+    private  String dateOfBirth;
 
     public Passport(int passportNumber, String lastName, String firstName, String middleName, String dateOfBirth) {
         this.passportNumber = passportNumber;
@@ -14,15 +13,6 @@ public class Passport {
         this.firstName = firstName;
         this.middleName = middleName;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public static Passport searchPassport(Passport searchPassport){
-        for(Passport passport : passportList){
-            if(passport.getPassportNumber() == searchPassport.getPassportNumber()){
-                return searchPassport;
-            }
-        }
-        return null;
     }
 
     public int getPassportNumber() {
@@ -35,6 +25,22 @@ public class Passport {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getMiddleName() {
@@ -68,5 +74,5 @@ public class Passport {
     public int hashCode() {
         return Objects.hash(passportNumber);
     }
-}
 
+}
